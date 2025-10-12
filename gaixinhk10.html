@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thư Chúc Ngủ Ngon</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fce4ec;
+      text-align: center;
+      padding-top: 100px;
+      position: relative;
+    }
+
+    .envelope {
+      width: 200px;
+      height: 150px;
+      background-color: #fff;
+      border: 2px solid #e91e63;
+      border-radius: 10px;
+      margin: 0 auto;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .envelope:hover {
+      transform: scale(1.05);
+    }
+
+    .flap {
+      width: 0;
+      height: 0;
+      border-left: 100px solid transparent;
+      border-right: 100px solid transparent;
+      border-bottom: 50px solid #e91e63;
+      position: absolute;
+      top: -50px;
+      left: 0;
+    }
+
+    #message {
+      display: none;
+      margin-top: 30px;
+      font-size: 22px;
+      color: #d81b60;
+      font-weight: bold;
+    }
+
+    .watermark {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      color: rgba(0, 0, 0, 0.2);
+      font-size: 14px;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="envelope" onclick="showMessage()">
+    <div class="flap"></div>
+    <p style="margin-top: 60px; color: #e91e63; font-weight: bold;">📩 Lá thư</p>
+  </div>
+
+  <div id="message">
+    Chúc các bạn nữ ngủ ngon nhé!!
+  </div>
+
+  <div class="watermark">LE ANH TUAN TAI</div>
+
+  <script>
+    function showMessage() {
+      document.getElementById("message").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
