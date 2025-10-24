@@ -3,7 +3,7 @@ html, body {
   height: 100%;
   margin: 0;
   overflow: hidden;
-  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,13 +100,12 @@ html, body {
 
 /* ===== TIM BAY FULL MÀN HÌNH ===== */
 .heart {
-  position: fixed;       /* fixed để bay full màn hình */
-  bottom: 0;
+  position: fixed;       /* fixed => bay tự do toàn màn hình */
   width: 18px;
   height: 18px;
   background: radial-gradient(circle at 30% 30%, #ffb6c1, #e91e63, #ad1457);
   transform: rotate(-45deg);
-  transform-origin: center bottom; /* đảm bảo đứng thẳng */
+  transform-origin: center bottom;
   opacity: 0.9;
   z-index: 0;
 }
