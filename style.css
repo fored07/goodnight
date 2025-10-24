@@ -7,9 +7,9 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(270deg, #f8bbd0, #fce4ec, #f48fb1);
-  background-size: 400% 400%;
-  animation: bgMove 10s ease infinite;
+  background: linear-gradient(270deg, #ffb6c1, #f8bbd0, #f48fb1, #f06292);
+  background-size: 600% 600%;
+  animation: bgMove 16s ease infinite;
 }
 
 @keyframes bgMove {
@@ -25,19 +25,26 @@ html, body {
   height: 180px;
   background: #fff;
   border: 3px solid #e91e63;
-  border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(233, 30, 99, 0.25);
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(233, 30, 99, 0.25);
   cursor: pointer;
   perspective: 1000px;
   overflow: hidden;
-  transition: transform 0.6s ease;
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
   z-index: 2;
 }
 
 .envelope:hover {
   transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(233, 30, 99, 0.4);
 }
 
+/* Khi mở phong bì tỏa sáng nhẹ */
+.envelope.open {
+  box-shadow: 0 0 40px rgba(233, 30, 99, 0.6);
+}
+
+/* ===== NẮP THƯ ===== */
 .flap {
   position: absolute;
   top: 0;
@@ -52,6 +59,7 @@ html, body {
   z-index: 3;
 }
 
+/* ===== LÁ THƯ ===== */
 .letter {
   position: absolute;
   bottom: 0;
@@ -85,7 +93,7 @@ html, body {
   color: #e91e63;
 }
 
-/* Khi mở thư */
+/* ===== KHI MỞ THƯ ===== */
 .envelope.open .flap {
   transform: rotateX(180deg);
 }
@@ -98,15 +106,15 @@ html, body {
   opacity: 1;
 }
 
-/* ===== TIM BAY (phiên bản chuẩn) ===== */
+/* ===== TIM BAY (phiên bản đẹp hơn, đổi màu) ===== */
 .heart {
   position: fixed;
   bottom: 0;
-  width: 16px;
-  height: 16px;
-  background-color: #e91e63;
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(circle at 30% 30%, #ffb6c1, #e91e63, #ad1457);
   transform: rotate(-45deg);
-  animation: heartFloat 4s linear forwards;
+  animation: heartFloat 5s linear forwards;
   opacity: 0.9;
   z-index: 0;
 }
@@ -115,19 +123,19 @@ html, body {
 .heart::after {
   content: "";
   position: absolute;
-  width: 16px;
-  height: 16px;
-  background-color: #e91e63;
+  width: 18px;
+  height: 18px;
+  background: inherit;
   border-radius: 50%;
 }
 
 .heart::before {
-  top: -8px;
+  top: -9px;
   left: 0;
 }
 
 .heart::after {
-  left: 8px;
+  left: 9px;
   top: 0;
 }
 
@@ -141,9 +149,25 @@ html, body {
     opacity: 0.9;
   }
   100% {
-    transform: translateY(-100vh) rotate(-45deg) scale(1.6);
+    transform: translateY(-100vh) rotate(-45deg) scale(1.7);
     opacity: 0;
   }
+}
+
+/* ===== SAO NHẤP NHÁY ===== */
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: twinkle 2.5s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
 }
 
 /* ===== WATERMARK ===== */
