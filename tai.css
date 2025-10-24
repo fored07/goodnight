@@ -1,0 +1,101 @@
+/* Nền nhẹ nhàng và chữ mềm mại */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+  height: 100vh;
+  text-align: center;
+  padding-top: 100px;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Phong bì */
+.envelope {
+  width: 220px;
+  height: 160px;
+  background-color: #fff;
+  border: 3px solid #e91e63;
+  border-radius: 10px;
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(233, 30, 99, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+
+.envelope:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(233, 30, 99, 0.35);
+}
+
+/* Nắp thư */
+.flap {
+  width: 0;
+  height: 0;
+  border-left: 110px solid transparent;
+  border-right: 110px solid transparent;
+  border-bottom: 60px solid #e91e63;
+  position: absolute;
+  top: -60px;
+  left: 0;
+  transition: transform 0.4s ease;
+  transform-origin: bottom;
+}
+
+/* Khi mở thư */
+.envelope.open .flap {
+  transform: rotateX(180deg);
+}
+
+.envelope p {
+  margin-top: 70px;
+  color: #e91e63;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Lời chúc */
+#message {
+  display: none;
+  margin-top: 40px;
+  font-size: 24px;
+  color: #c2185b;
+  font-weight: bold;
+  opacity: 0;
+  animation: fadeIn 1.2s forwards;
+}
+
+/* Hiệu ứng mờ dần */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Watermark */
+.watermark {
+  position: fixed;
+  bottom: 10px;
+  right: 15px;
+  color: rgba(0, 0, 0, 0.25);
+  font-size: 14px;
+  letter-spacing: 1px;
+  user-select: none;
+}
+
+/* Thêm hiệu ứng sao bay */
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite ease-in-out;
+  opacity: 0.7;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
