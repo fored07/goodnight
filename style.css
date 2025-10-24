@@ -1,55 +1,88 @@
-/* ===== NỀN VÀ TOÀN TRANG ===== */
+/* ===== TOÀN TRANG ===== */
 html, body {
   height: 100%;
-  width: 100%;
   margin: 0;
   overflow: hidden;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(270deg, #f8bbd0, #fce4ec, #f48fb1);
+  background-size: 400% 400%;
+  animation: bgMove 10s ease infinite;
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #fce4ec, #f8bbd0);
-  background-attachment: fixed;
-  text-align: center;
-  padding-top: 100px;
-  position: relative;
-  -webkit-font-smoothing: antialiased;
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* ===== PHONG BÌ ===== */
 .envelope {
-  width: 220px;
-  height: 160px;
-  background-color: #fff;
+  position: relative;
+  width: 250px;
+  height: 180px;
+  background: #fff;
   border: 3px solid #e91e63;
   border-radius: 10px;
-  margin: 0 auto;
-  position: relative;
-  cursor: pointer;
   box-shadow: 0 6px 20px rgba(233, 30, 99, 0.25);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  transform-style: preserve-3d;
+  cursor: pointer;
+  perspective: 1000px;
+  overflow: hidden;
+  transition: transform 0.6s ease;
   z-index: 2;
 }
 
 .envelope:hover {
-  transform: scale(1.08);
-  box-shadow: 0 10px 30px rgba(233, 30, 99, 0.35);
+  transform: scale(1.05);
 }
 
-/* ===== NẮP THƯ ===== */
 .flap {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 0;
   height: 0;
-  border-left: 110px solid transparent;
-  border-right: 110px solid transparent;
-  border-bottom: 60px solid #e91e63;
+  border-left: 125px solid transparent;
+  border-right: 125px solid transparent;
+  border-top: 80px solid #e91e63;
+  transform-origin: top;
+  transition: transform 0.6s ease-in-out;
+  z-index: 3;
+}
+
+.letter {
   position: absolute;
-  top: -60px;
+  bottom: 0;
   left: 0;
-  transform-origin: bottom;
-  transition: transform 0.6s ease;
-  transform-style: preserve-3d;
+  width: 100%;
+  height: 0;
+  background: #fff;
+  border-top: 2px solid #f8bbd0;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: height 1s ease-in-out;
+  z-index: 1;
+}
+
+.letter p {
+  opacity: 0;
+  margin: 40px 20px;
+  color: #c2185b;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.5;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.label {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  color: #e91e63;
 }
 
 /* Khi mở thư */
@@ -57,38 +90,72 @@ body {
   transform: rotateX(180deg);
 }
 
-.envelope p {
-  margin-top: 70px;
-  color: #e91e63;
-  font-weight: bold;
-  font-size: 18px;
-  user-select: none;
+.envelope.open .letter {
+  height: 100%;
 }
 
-/* ===== LỜI CHÚC ===== */
-#message {
-  display: none;
-  margin-top: 40px;
-  font-size: 24px;
-  color: #c2185b;
-  font-weight: bold;
-  opacity: 0;
-  transform: translateY(10px);
+.envelope.open .letter p {
+  opacity: 1;
 }
 
-.fade-in {
-  animation: fadeInUp 1s forwards ease-in-out;
+/* ===== TIM BAY ===== */
+.heart {
+  position: fixed;
+  bottom: 0;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle at 30% 30%, #ff80ab, #e91e63);
+  transform: rotate(45deg);
+  animation: heartFloat linear forwards;
+  opacity: 0.8;
+  z-index: 0;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: 10px;
+  top: 0;
+}
+
+@keyframes heartFloat {
+  0% {
+    transform: translateY(0) rotate(45deg) scale(1);
     opacity: 1;
-    transform: translateY(0);
   }
+  100% {
+    transform: translateY(-100vh) rotate(45deg) scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* ===== SAO NHẤP NHÁY ===== */
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
 }
 
 /* ===== WATERMARK ===== */
@@ -100,27 +167,4 @@ body {
   font-size: 14px;
   letter-spacing: 1px;
   user-select: none;
-}
-
-/* ===== HIỆU ỨNG SAO ===== */
-.star {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  background: white;
-  border-radius: 50%;
-  animation: twinkle 2s infinite ease-in-out;
-  opacity: 0.8;
-  z-index: 0;
-}
-
-@keyframes twinkle {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.4);
-  }
 }
