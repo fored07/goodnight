@@ -108,15 +108,14 @@ html, body {
 
 /* ===== TIM BAY (phiên bản đẹp hơn, đổi màu) ===== */
 .heart {
-  position: fixed;
-  bottom: 0;
+  position: absolute; /* thay fixed */
   width: 18px;
   height: 18px;
   background: radial-gradient(circle at 30% 30%, #ffb6c1, #e91e63, #ad1457);
-  transform: rotate(-45deg);
-  animation: heartFloat 5s linear forwards;
+  transform: scale(1);
   opacity: 0.9;
   z-index: 0;
+  pointer-events: none; /* tránh chặn click */
 }
 
 .heart::before,
@@ -129,30 +128,9 @@ html, body {
   border-radius: 50%;
 }
 
-.heart::before {
-  top: -9px;
-  left: 0;
-}
+.heart::before { top: -9px; left: 0; }
+.heart::after { left: 9px; top: 0; }
 
-.heart::after {
-  left: 9px;
-  top: 0;
-}
-
-@keyframes heartFloat {
-  0% {
-    transform: translateY(0) rotate(-45deg) scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(-50vh) rotate(-45deg) scale(1.3);
-    opacity: 0.9;
-  }
-  100% {
-    transform: translateY(-100vh) rotate(-45deg) scale(1.7);
-    opacity: 0;
-  }
-}
 
 /* ===== SAO NHẤP NHÁY ===== */
 .star {
