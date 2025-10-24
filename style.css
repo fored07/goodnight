@@ -106,7 +106,7 @@ html, body {
   opacity: 1;
 }
 
-/* ===== TIM BAY (phiên bản đẹp hơn, đổi màu) ===== */
+/* ===== TIM BAY CHUẨN (ĐỨNG THẲNG) ===== */
 .heart {
   position: fixed;
   bottom: 0;
@@ -114,6 +114,7 @@ html, body {
   height: 18px;
   background: radial-gradient(circle at 30% 30%, #ffb6c1, #e91e63, #ad1457);
   transform: rotate(-45deg);
+  transform-origin: center bottom; /* đảm bảo trục xoay đúng */
   animation: heartFloat 5s linear forwards;
   opacity: 0.9;
   z-index: 0;
@@ -135,8 +136,8 @@ html, body {
 }
 
 .heart::after {
-  left: 9px;
   top: 0;
+  left: 9px;
 }
 
 @keyframes heartFloat {
@@ -149,7 +150,7 @@ html, body {
     opacity: 0.9;
   }
   100% {
-    transform: translateY(-100vh) rotate(-45deg) scale(1.7);
+    transform: translateY(-100vh) rotate(-45deg) scale(1.6);
     opacity: 0;
   }
 }
