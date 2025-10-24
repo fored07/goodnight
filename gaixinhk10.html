@@ -2,6 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thư Chúc Ngủ Ngon</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -13,7 +14,7 @@
   </div>
 
   <div id="message">
-    🌙 Chúc các bạn nữ ngủ thật ngon và mơ thật đẹp nhé! 💖
+    🌙 Chúc bạn nữ ngủ thật ngon và mơ thật đẹp nhé! 💖
   </div>
 
   <div class="watermark">LE ANH TUAN TAI</div>
@@ -23,9 +24,10 @@
       el.classList.add("open");
       const msg = document.getElementById("message");
       msg.style.display = "block";
+      msg.classList.add("fade-in");
     }
 
-    // Tạo hiệu ứng sao ngẫu nhiên
+    // Tạo sao ngẫu nhiên
     for (let i = 0; i < 25; i++) {
       const star = document.createElement("div");
       star.classList.add("star");
