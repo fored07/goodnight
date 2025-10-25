@@ -178,3 +178,23 @@ html, body {
   user-select: none;
   text-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
+/* ===== NÚT LINK TRONG LÁ THƯ ===== */
+.btn-link {
+  display: inline-block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #f48fb1, #ec407a);
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-link:hover {
+  background: linear-gradient(45deg, #ec407a, #ad1457);
+  transform: scale(1.08);
+  box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4);
+}
