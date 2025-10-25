@@ -9,8 +9,8 @@ function createHeart() {
   document.body.appendChild(heart);
 
   let bottom = 0;
-  const speed = 1 + Math.random() * 2; // tốc độ bay
-  const scale = 1 + Math.random() * 0.5;
+  const speed = 2 + Math.random() * 2; // tốc độ bay
+  const scale = 2 + Math.random() * 0.5;
 
   function animate() {
     bottom += speed;
@@ -28,4 +28,4 @@ function createHeart() {
 }
 
 // Tạo tim liên tục
-setInterval(createHeart, 300);
+setInterval(createHeart, 10);
