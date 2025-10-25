@@ -109,17 +109,19 @@ html, body {
   opacity: 1;
 }
 
-/* ===== TIM BAY ===== */
+/* ===== TIM BAY TOÀN MÀN HÌNH ===== */
 .heart {
-  position: absolute;
+  position: fixed;
+  top: -20px;
   width: 18px;
   height: 18px;
   background: radial-gradient(circle at 30% 30%, #ffb6c1, #f06292, #ad1457);
-  transform: scale(1);
+  transform: rotate(45deg);
   opacity: 0.9;
   z-index: 0;
   pointer-events: none;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+  animation: fall 6s linear infinite;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
 .heart::before,
@@ -134,6 +136,20 @@ html, body {
 
 .heart::before { top: -9px; left: 0; }
 .heart::after { left: 9px; top: 0; }
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(45deg) scale(1);
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg) scale(0.7);
+    opacity: 0;
+  }
+}
 
 /* ===== SAO NHẤP NHÁY ===== */
 .star {
@@ -156,7 +172,7 @@ html, body {
   position: fixed;
   bottom: 10px;
   right: 15px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 13px;
   letter-spacing: 1px;
   user-select: none;
